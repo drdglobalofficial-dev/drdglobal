@@ -28,31 +28,7 @@
 <div class="footer">DRD Global • More Services • More Value • A Brighter Future<br>Website prototype — live services require verified integrations.</div></div>
 <nav class="bottom"><button class="nav active" data-page="home" onclick="go('home')"><span>⌂</span>Home</button><button class="nav" data-page="market" onclick="go('market')"><span>🛒</span>Market</button><button class="nav" data-page="cart" onclick="go('cart')"><span>🧺</span>Cart</button><button class="nav" data-page="wallet" onclick="go('wallet')"><span>▣</span>Wallet</button><button class="nav" data-page="profile" onclick="go('profile')"><span>☻</span>Profile</button></nav>
 <div id="toastBox" class="toast" role="status"></div><div id="modalbg" class="modalbg" role="dialog" aria-modal="true"><div class="modal"><div class="modalhead"><h3 id="mtitle">DRD Global</h3><button class="close" onclick="closeModal()">×</button></div><p id="mbody" style="line-height:1.55;color:#687283"></p><button class="primary" onclick="closeModal()">Done</button></div></div>
-<script><div class="payment-options" id="marketPaymentOptions"
-     role="group" aria-label="Choose payment method">
-
-  <button type="button" class="pill" aria-pressed="false"
-    onclick="selectPaymentMethod(this,'Bank transfer')">
-    🏦 Bank transfer
-  </button>
-
-  <button type="button" class="pill" aria-pressed="false"
-    onclick="selectPaymentMethod(this,'Debit / credit card')">
-    💳 Debit / credit cards
-  </button>
-
-  <button type="button" class="pill" aria-pressed="false"
-    onclick="selectPaymentMethod(this,'DRD token')">
-    🔷 DRD token
-  </button>
-
-  <button type="button" class="pill" aria-pressed="false"
-    onclick="selectPaymentMethod(this,'Local payment method')">
-    🌍 Local payment methods
-  </button>
-</div>
-
-<p id="selectedPaymentNote" class="notice" aria-live="polite" hidden></p>
+<script>
 const pageIds={home:'home',services:'servicesPage',transactions:'transactionsPage',wallet:'walletPage',market:'marketPage',cart:'cartPage',seller:'sellerPage',profile:'profilePage'};
 function go(id){Object.values(pageIds).forEach(pid=>{let el=document.getElementById(pid);if(el)el.style.display='none'});let target=document.getElementById(pageIds[id]||'home');if(target)target.style.display='block';document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',el.id===pageIds[id]));document.getElementById('home').style.display=id==='home'?'block':'none';document.querySelectorAll('.nav').forEach(el=>el.classList.toggle('active',el.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='cart')renderCart()}
 function toast(t){let x=document.getElementById('toastBox');x.textContent=t;x.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>x.classList.remove('show'),3000)}
